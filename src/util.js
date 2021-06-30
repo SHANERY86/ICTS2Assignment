@@ -6,3 +6,5 @@ export function excerpt(string) {
     separator: /,?\.* +/, // separate by spaces, including preceding commas and periods
   });
 }
+
+//test
