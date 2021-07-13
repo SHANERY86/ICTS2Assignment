@@ -8,6 +8,7 @@ import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -23,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
 const TemplateMoviePage = ({ movie, children }) => {
   const classes = useStyles();
   const { data , error, isLoading, isError } = useQuery(
-    ["images", { id: movie.id }],
+   ["images", { id: movie.id }],
     getMovieImages
-  );
+  ); 
 
   if (isLoading) {
     return <Spinner />;
