@@ -46,3 +46,5 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
+//The exercise work is sort of spread across these commits unevenly, sorry for any confusion, but its all there. 
