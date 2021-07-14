@@ -15,7 +15,6 @@ const HomePage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }  
-  console.log(data);
   const movies = data.results;
 
   return (
