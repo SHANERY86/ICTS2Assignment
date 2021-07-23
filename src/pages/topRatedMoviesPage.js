@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
-const UpcomingMoviesPage = (props) => {
+const TopRatedMoviesPage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('topRated', getTopRatedMovies)
 
   if (isLoading) {
@@ -28,4 +28,4 @@ const UpcomingMoviesPage = (props) => {
     />
   );
 };
-export default UpcomingMoviesPage;
+export default TopRatedMoviesPage;
