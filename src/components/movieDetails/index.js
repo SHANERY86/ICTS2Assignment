@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews"
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
+  fab2: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(20),
+  }
 }));
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
@@ -85,6 +91,15 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <NavigationIcon />
         Reviews
       </Fab>
+      <Link to={`/similar/${movie.id}`}>
+      <Fab
+        color="secondary"
+        variant="extended"
+        className={classes.fab2}
+      >
+        Similar Titles
+        </Fab>
+        </Link>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
