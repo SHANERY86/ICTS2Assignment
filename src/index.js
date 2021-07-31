@@ -8,6 +8,7 @@ import MovieReviewPage from "./pages/movieReviewPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
 import similarMoviesPage from "./pages/similarMoviesPage";
+import ExplorePage from "./pages/explorePage";
 import SiteHeader from './components/siteHeader';
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/upcoming" component={UpcomingMoviesPage} />
         <Route path="/toprated" component={TopRatedMoviesPage} />
         <Route path="/similar/:id" component={similarMoviesPage} />
+        <Route path="/explore" component={ExplorePage} />
         <Redirect from="*" to="/" />
       </Switch>
       </MoviesContextProvider>

@@ -26,8 +26,8 @@ const actors = {
 }
 
   const explore = [
-    { directors, id: 1 },
-    { actors, id: 2 },
+    { ...directors, id: 1 },
+    { ...actors, id: 2 },
   ];
   return (
     <Grid container spacing={5}>
