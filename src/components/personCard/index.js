@@ -38,7 +38,7 @@ return (
               <Typography variant="h4" component="p">
               {person.title}{" "}
               </Typography>
-              <Typography variant="h6">
+              <Typography variant="h6" component="p">
               {person.movies.map((g) => (
           <li key={g}>
               {g}

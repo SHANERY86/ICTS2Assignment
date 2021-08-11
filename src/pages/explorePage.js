@@ -17,18 +17,20 @@ const HomePage = (props) => {
   }   
   const movies = data.results; */
 
-  const directors = {
-    title: "Directors",
-    img: `https://media.istockphoto.com/vectors/vintage-cinema-concept-vector-id861198276?k=6&m=861198276&s=612x612&w=0&h=Z3A4h2DhkD5ZUyiG9F9dJoNI2WPzlImqITGBrI-gNbI=`
+  const people = {
+    title: "People",
+    img: `https://www.freevector.com/uploads/vector/preview/28523/Group-of-People.jpg`,
+    link: "/"
 }
 
 const actors = {
-    title: "Actors",
-    img: `https://media.istockphoto.com/vectors/theatre-flat-design-united-kingdom-icon-vector-id1012746056?k=6&m=1012746056&s=612x612&w=0&h=g11MABmi1quAmirnaojsy2l2d3U3FAgagt76qE5__vs=`
+    title: "Placeholder",
+    img: `https://media.istockphoto.com/vectors/theatre-flat-design-united-kingdom-icon-vector-id1012746056?k=6&m=1012746056&s=612x612&w=0&h=g11MABmi1quAmirnaojsy2l2d3U3FAgagt76qE5__vs=`,
+    link: "/"
 }
 
   const explore = [
-    { ...directors, id: 1 },
+    { ...people, id: 1 },
     { ...actors, id: 2 },
   ];
 

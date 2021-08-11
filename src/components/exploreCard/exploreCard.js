@@ -34,7 +34,7 @@ return (
               {explore.img}       
        /> 
        <CardContent>
-              <Link href="#">
+              <Link to={explore.link}>
               <Typography variant="h4" component="p">
               {explore.title}{" "}
               </Typography>
