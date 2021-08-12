@@ -5,7 +5,7 @@ import Spinner from '../components/spinner'
 import {getMovies} from '../api/tmdb-api'
 
 
-const HomePage = (props) => {
+const ExplorePage = (props) => {
 /*  const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
 
   if (isLoading) {
@@ -20,7 +20,7 @@ const HomePage = (props) => {
   const people = {
     title: "People",
     img: `https://www.freevector.com/uploads/vector/preview/28523/Group-of-People.jpg`,
-    link: "/"
+    link: "/people"
 }
 
 const actors = {
@@ -42,4 +42,4 @@ const actors = {
 );
 };
 
-export default HomePage;
+export default ExplorePage;

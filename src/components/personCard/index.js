@@ -24,6 +24,13 @@ avatar: {
 });
 
 export default function PersonCard({person}) {
+let imageLink = "";
+if(person.profile_path){
+       imageLink = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${person.profile_path}`
+}
+if(!person.profile_path){
+       imageLink = "https://bolderadvocacy.org/wp-content/uploads/2018/08/blue-icon-question-mark-image.png"
+}
 const classes = useStyles();
 return (
        <Card className={classes.card}>
@@ -31,17 +38,17 @@ return (
        <CardMedia
        className={classes.media}
        image=
-              {person.img}       
+              {imageLink}     
        /> 
        <CardContent>
               <Link href="#">
               <Typography variant="h4" component="p">
-              {person.title}{" "}
+              {person.name}{" "}
               </Typography>
               <Typography variant="h6" component="p">
-              {person.movies.map((g) => (
+              {person.known_for.map((g) => (
           <li key={g}>
-              {g}
+              {g.name || g.original_title}
           </li>
         ))}
               </Typography>
