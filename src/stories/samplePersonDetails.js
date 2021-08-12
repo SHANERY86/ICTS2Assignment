@@ -1,0 +1,30 @@
+export default {
+        "adult": false,
+        "also_known_as": [
+            "Марго Роббі",
+            "Марго Робби",
+            "มาร์โก ร็อบบี",
+            "瑪歌·羅比",
+            "마고 로비",
+            "مارجوت روبي",
+            "マーゴット・ロビー",
+            "Марго Роби",
+            "Margot Elise Robbie",
+            "Μάργκοτ Ελίς Ρόμπι",
+            "Μάργκοτ Ρόμπι",
+            "玛格特·罗比",
+            "Марґо Роббі"
+        ],
+        "biography": "Margot Elise Robbie (born 2 July 1990) is an Australian actress and producer. She has received nominations for two Academy Awards and five BAFTA Awards. In 2017, Time magazine named her one of the 100 most influential people in the world, and in 2019, she was ranked among the world's highest-paid actresses.\n\nRobbie studied drama at Somerset College and began her career in Australian independent films in the late 2000s, before working in the soap opera Neighbours (2008–2011). After moving to America, she starred in the ABC drama series Pan Am (2011–2012) and had her breakthrough role in Martin Scorsese's black comedy film The Wolf of Wall Street (2013). Robbie's profile continued to grow with starring roles as a grifter in Focus (2015), Jane Porter in The Legend of Tarzan (2016), and Harley Quinn in the DC Extended Universe, beginning with Suicide Squad (2016).\n\nRobbie garnered critical acclaim and nominations for the BAFTA Award and Academy Award for Best Actress for portraying the disgraced figure skater Tonya Harding in the biopic I, Tonya (2017). This acclaim continued for her roles as Queen Elizabeth I in the period drama Mary Queen of Scots (2018), Sharon Tate in the comedy-drama Once Upon a Time in Hollywood (2019), and a fictional Fox News employee in the drama Bombshell (2019). She received BAFTA Award nominations for all three and a nomination for the Academy Award for Best Supporting Actress for the lattermost.\n\nRobbie is married to the filmmaker Tom Ackerley. They are among the founders of the production company LuckyChap Entertainment, under which she has produced some of her own films, as well as the television series Dollface (2019–present).",
+        "birthday": "1990-07-02",
+        "deathday": null,
+        "gender": 1,
+        "homepage": null,
+        "id": 234352,
+        "imdb_id": "nm3053338",
+        "known_for_department": "Acting",
+        "name": "Margot Robbie",
+        "place_of_birth": "Dalby, Queensland, Australia",
+        "popularity": 70.799,
+        "profile_path": "/euDPyqLnuwaWMHajcU3oZ9uZezR.jpg"
+    }

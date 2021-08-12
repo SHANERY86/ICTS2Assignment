@@ -45,14 +45,14 @@ return (
               <Typography variant="h4" component="p">
               {person.name}{" "}
               </Typography>
+              </Link>
               <Typography variant="h6" component="p">
               {person.known_for.map((g) => (
           <li key={g}>
-              {g.name || g.original_title}
+              {g.name || g.title}
           </li>
         ))}
-              </Typography>
-              </Link>
+              </Typography>            
        </CardContent>
        </Card>
 );

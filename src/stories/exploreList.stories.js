@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import MoviesContextProvider from "../contexts/moviesContext";
 
 export default {
-  title: "Home Page/ExploreList",
+  title: "Explore Page/ExploreList",
   component: ExploreList,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
