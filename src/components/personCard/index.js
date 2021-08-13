@@ -16,7 +16,7 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
-card: { maxWidth: 345 },
+card: { maxWidth: 400 },
 media: { height: 500 },
 avatar: {
        backgroundColor: "rgb(255, 0, 0)",
@@ -49,7 +49,9 @@ return (
               <Typography variant="h6" component="p">
               {person.known_for.map((g) => (
           <li key={g}>
+                 <Link to={`/movies/${g.id}`}>
               {g.name || g.title}
+              </Link>
           </li>
         ))}
               </Typography>            
