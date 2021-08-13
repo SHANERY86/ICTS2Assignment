@@ -5,14 +5,20 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
+import Fab from "@material-ui/core/Fab";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+  fab: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+  },
     card: { maxWidth: 345 },
     media: { height: 500 },
     avatar: {
            backgroundColor: "rgb(255, 0, 0)",
     },
-    });
+    }));
 
 export default function PersonDetails ({ person }) {  
  //   const classes = useStyles();
@@ -44,6 +50,15 @@ const classes = useStyles();
         </Typography>
         </Grid>
         </Grid>
+        <Link to={`/moviesbyactor/${person.id}`}>
+      <Fab
+        color="secondary"
+        variant="extended"
+        className={classes.fab}
+      >
+        See Movies
+        </Fab>
+        </Link>
         </>
   );
   }

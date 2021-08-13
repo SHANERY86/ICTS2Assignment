@@ -97,3 +97,27 @@ export const getMovies = async () => {
     }
     return response.json();
   }
+
+
+  export const getPerson = async (args) => {
+    const [prefix, { id }] = args.queryKey;   
+    const response = await fetch(
+      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  }
+
+  export const getMoviesByActor = async (args) => {
+    const [prefix, { id }] = args.queryKey;   
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&with_cast=${id}`
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json(); 
+  }
+

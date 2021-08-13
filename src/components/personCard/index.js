@@ -41,7 +41,7 @@ return (
               {imageLink}     
        /> 
        <CardContent>
-              <Link href="#">
+              <Link to={`/person/${person.id}`}>
               <Typography variant="h4" component="p">
               {person.name}{" "}
               </Typography>
