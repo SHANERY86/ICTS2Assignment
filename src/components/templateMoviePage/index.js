@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MovieHeader from "../headerMovie";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
-import { getMovieImages } from "../../api/tmdb-api";
+import { getMovieImages, getMovieCredits } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
@@ -58,7 +58,7 @@ const TemplateMoviePage = ({ movie, children }) => {
         </Grid>
 
         <Grid item xs={9}>
-          {children}
+          {children}        
         </Grid>
       </Grid>
     </>
