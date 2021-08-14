@@ -11,8 +11,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews"
 import { Link } from "react-router-dom";
-import { getMovieCredits } from "../../api/tmdb-api";
-import { useQuery } from 'react-query';
+import { withRouter, useHistory } from "react-router-dom";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,27 +40,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieDetails = ({ movie, credits } ) => { 
-/*Query({
-    queryKey: ["credits", { id: movie.id }],
-    queryFn: getMovieCredits,
-  }) 
-  let creditsData = credits.data;
-  console.log(creditsData); */
 
-/*  const [credits, setCredits] = useState([]);
+  let history = useHistory();
+  const handleClick = (id) => {
+    console.log(id);
+    history.push(`/person/${id}`)
+  }
 
-  useEffect(() => {
-    getMovieCredits(movie.id).then((credits) => {
-      setCredits(credits);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
-  console.log(movie); 
-//  const cast = credits.cast; 
- // console.log(cast);
- // console.log(movie.genres);
-  console.log(credits);
-  
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -112,7 +98,7 @@ const MovieDetails = ({ movie, credits } ) => {
         </li>
         {credits.cast.slice(0,10).map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} />
+            <Chip label={g.name} className={classes.chip} onClick={() => handleClick(g.id)}/>
           </li>
         ))}
       </Paper>
@@ -140,4 +126,4 @@ const MovieDetails = ({ movie, credits } ) => {
     </>
   );
 };
-export default  MovieDetails ;
+export default  withRouter(MovieDetails) ;
