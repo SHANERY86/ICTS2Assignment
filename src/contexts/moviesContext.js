@@ -6,6 +6,25 @@ const MoviesContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} )
   const [favorites, setFavorites] = useState( [] )
   const [watchList, setWatchList] = useState( [] )
+  const [user, setUser] = useState({ username: null, password: null });
+
+const userData = 
+  { username: "shanery86",
+    password: "secret"
+}
+
+  const authenticate = (username, password) => {
+    console.log("aaaa");
+    if(username == userData.username && password == userData.password ){
+    setUser({ username, password });
+    }
+  };
+
+  const isAuthenticated = user.username === null ? false : true
+
+  const signout = () => {
+    setTimeout(() => setUser( { username: null, password: null } ), 100);
+  };
 
   const addToFavorites = (movie) => {
     setFavorites([...favorites,movie.id])
@@ -30,10 +49,13 @@ const MoviesContextProvider = (props) => {
       value={{
         favorites,
         watchList,
+        isAuthenticated,
         addToFavorites,
         removeFromFavorites,
         addReview,
-        addToWatchList
+        addToWatchList,
+        authenticate,
+        signout
       }}
     >
       {props.children}

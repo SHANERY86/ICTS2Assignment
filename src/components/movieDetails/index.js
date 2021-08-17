@@ -96,9 +96,9 @@ const MovieDetails = ({ movie, credits } ) => {
         <li>
           <Chip label="Cast" className={classes.chip} color="primary" />
         </li>
-        {credits.cast.slice(0,10).map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} onClick={() => handleClick(g.id)}/>
+        {credits.cast.slice(0,10).map((c) => (
+          <li key={c.name}>
+            <Chip label={c.name} className={classes.chip} onClick={() => handleClick(c.id)}/>
           </li>
         ))}
       </Paper>

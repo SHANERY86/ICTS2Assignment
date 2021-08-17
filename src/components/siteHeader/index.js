@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,6 +12,7 @@ import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { MoviesContext } from "../../contexts/moviesContext";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -26,14 +27,21 @@ const SiteHeader = ( { history }) => {
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const context = useContext(MoviesContext);
 
-  const menuOptions = [
+  const menuOptions = context.isAuthenticated ? [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/upcoming"},
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Top Rated", path: "/toprated" },
     { label: "Explore", path: "/explore" },
-  ];
+  ] : 
+  [    
+  { label: "Home", path: "/" },
+  { label: "Upcoming", path: "/upcoming"},
+  { label: "Top Rated", path: "/toprated" },
+  { label: "Explore", path: "/explore" },
+  { label: "Login", path: "/login"}];
 
   const handleMenuSelect = (pageURL) => {
     history.push(pageURL);

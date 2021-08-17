@@ -17,6 +17,7 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import PersonDetailsPage from './pages/personDetailsPage';
 import MoviesByActorPage from './pages/moviesByActorPage';
+import LoginPage from './pages/loginPage';
 
 
 const queryClient = new QueryClient({
@@ -33,8 +34,8 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
+    <MoviesContextProvider>
       <SiteHeader /> 
-      <MoviesContextProvider>
       <Switch>
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
         <Route path="/reviews/:id" component={MovieReviewPage} />       
@@ -47,7 +48,8 @@ const App = () => {
         <Route path="/explore" component={ExplorePage} />
         <Route path="/people" component={PeoplePage} />
         <Route path="/person/:id" component={PersonDetailsPage} />
-        <Route path="/moviesbyactor/:id" component={MoviesByActorPage} />       
+        <Route path="/moviesbyactor/:id" component={MoviesByActorPage} />  
+        <Route path="/login" component={LoginPage} />  
         <Redirect from="*" to="/" />
       </Switch>
       </MoviesContextProvider>
