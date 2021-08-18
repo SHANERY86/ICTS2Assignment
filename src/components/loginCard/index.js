@@ -29,16 +29,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const LoginForm = () => {            
   const context = useContext(MoviesContext);
   let history = useHistory();
   const classes = useStyles();
-  const { handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (username, password) => {
-    context.authenticate(username,password);
+
+  const onSubmit = (userData) => {
+    context.authenticate(userData.username,userData.password);
     history.push("/");
-  }
+  } 
+
 
   return (
       
@@ -47,6 +51,7 @@ const LoginForm = () => {
       <form
         className={classes.form}
         onSubmit={handleSubmit(onSubmit)}
+        noValidate
       >
         <Typography variant="h6">
         Username
@@ -56,10 +61,12 @@ const LoginForm = () => {
           variant="outlined"
           margin="normal"
           required
-          id="author"
+          id="username"
           label="Username"
-          name="author"
+          name="username"
+          defaultValue="user"
           autoFocus
+          inputRef={register("username")}
         />
                 <Typography variant="h6">
         Password
@@ -69,10 +76,12 @@ const LoginForm = () => {
           variant="outlined"
           margin="normal"
           required
-          id="author"
+          id="password"
           label="Password"
-          name="author"
+          name="password"
+          defaultValue="secret"
           autoFocus
+          inputRef={register("password")}
         />
         <Box className={classes.buttons}>
           <Button

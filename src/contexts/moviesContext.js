@@ -9,12 +9,11 @@ const MoviesContextProvider = (props) => {
   const [user, setUser] = useState({ username: null, password: null });
 
 const userData = 
-  { username: "shanery86",
+  { username: "user",
     password: "secret"
 }
 
   const authenticate = (username, password) => {
-    console.log("aaaa");
     if(username == userData.username && password == userData.password ){
     setUser({ username, password });
     }

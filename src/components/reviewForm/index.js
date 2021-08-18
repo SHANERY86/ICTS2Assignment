@@ -68,6 +68,7 @@ const ReviewForm = ({ movie, history }) => {
   const [rating, setRating] = useState(3);
   const [open, setOpen] = React.useState(false);
 
+
   const handleRatingChange = (event) => {
     setRating(event.target.value);
   };
@@ -80,6 +81,7 @@ const ReviewForm = ({ movie, history }) => {
   const onSubmit = (review) => {
     review.movieId = movie.id;
     review.rating = rating;
+    console.log(review);
     context.addReview(movie, review);
     setOpen(true);
   };

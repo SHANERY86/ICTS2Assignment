@@ -35,6 +35,7 @@ const SiteHeader = ( { history }) => {
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Top Rated", path: "/toprated" },
     { label: "Explore", path: "/explore" },
+    { label: "Logout", path: "/" },
   ] : 
   [    
   { label: "Home", path: "/" },
@@ -43,8 +44,11 @@ const SiteHeader = ( { history }) => {
   { label: "Explore", path: "/explore" },
   { label: "Login", path: "/login"}];
 
-  const handleMenuSelect = (pageURL) => {
-    history.push(pageURL);
+  const handleMenuSelect = (option) => {
+    if(option.label == "Logout"){
+      context.isAuthenticated = false;
+    }
+    history.push(option.path);
   };
 
   const handleMenu = (event) => {
@@ -90,7 +94,7 @@ const SiteHeader = ( { history }) => {
                   {menuOptions.map((opt) => (
                     <MenuItem
                       key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
+                      onClick={() => handleMenuSelect(opt)}
                     >
                       {opt.label}
                     </MenuItem>
@@ -103,7 +107,7 @@ const SiteHeader = ( { history }) => {
                   <Button
                     key={opt.label}
                     color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
+                    onClick={() => handleMenuSelect(opt)}
                   >
                     {opt.label}
                   </Button>
