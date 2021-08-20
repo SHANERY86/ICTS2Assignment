@@ -7,10 +7,15 @@ const MoviesContextProvider = (props) => {
   const [favorites, setFavorites] = useState( [] )
   const [watchList, setWatchList] = useState( [] )
   const [user, setUser] = useState({ username: null, password: null });
+  const [page, setPage] = useState(1);
 
 const userData = 
   { username: "user",
     password: "secret"
+}
+
+const newPage = () => {
+  setPage(page)
 }
 
   const authenticate = (username, password) => {
@@ -46,9 +51,11 @@ const userData =
   return (
     <MoviesContext.Provider
       value={{
+        page,
         favorites,
         watchList,
         isAuthenticated,
+        newPage,
         addToFavorites,
         removeFromFavorites,
         addReview,

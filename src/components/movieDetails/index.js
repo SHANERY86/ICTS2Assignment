@@ -12,6 +12,8 @@ import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews"
 import { Link } from "react-router-dom";
 import { withRouter, useHistory } from "react-router-dom";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 
 

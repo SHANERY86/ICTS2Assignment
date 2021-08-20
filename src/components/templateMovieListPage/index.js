@@ -4,6 +4,7 @@ import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
+import Pagination from "../pagination"
 
 const useStyles = makeStyles({
   root: {
@@ -11,12 +12,17 @@ const useStyles = makeStyles({
   },
 });
 
-function MovieListPageTemplate({ movies, title, action }) {
+function MovieListPageTemplate({ movies, title, action}) {
+  const [page,setPage] = useState(1);
+  console.log("pagetemplate: " + page)
   const classes = useStyles();
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const updatePage = (newPage) => {
+    setPage(newPage)
+}
+  
   const genreId = Number(genreFilter);
-
   let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
@@ -31,6 +37,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   };
 
   return (
+    <>
     <Grid container className={classes.root}>
       <Grid item xs={12}>
         <Header title={title} />
@@ -46,6 +53,8 @@ function MovieListPageTemplate({ movies, title, action }) {
         <MovieList action={action} movies={displayedMovies}></MovieList>
       </Grid>
     </Grid>
+    <Pagination updatePage={updatePage}/>
+            </>
   );
 }
 export default MovieListPageTemplate;

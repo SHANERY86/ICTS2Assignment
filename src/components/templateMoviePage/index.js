@@ -6,7 +6,9 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import { getMovieImages, getMovieCredits } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
-import Spinner from '../spinner'
+import Spinner from '../spinner';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TemplateMoviePage = ({ movie, children }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyles();
   const { data , error, isLoading, isError } = useQuery(
    ["images", { id: movie.id }],
@@ -42,6 +46,7 @@ const TemplateMoviePage = ({ movie, children }) => {
       <MovieHeader movie={movie} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
+        {isMobile ? (<> </> ) : (
         <Grid item xs={3}>
           <div className={classes.root}>
             <GridList cellHeight={500} className={classes.gridList} cols={1}>
@@ -55,7 +60,7 @@ const TemplateMoviePage = ({ movie, children }) => {
               ))}
             </GridList>
           </div>
-        </Grid>
+        </Grid> )}
 
         <Grid item xs={9}>
           {children}        
