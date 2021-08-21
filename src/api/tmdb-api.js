@@ -8,9 +8,9 @@ export const getMovies = async ( page ) => {
   return response.json();
 };
 
-  export const getUpcomingMovies = async () => {
+  export const getUpcomingMovies = async (page) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
     );
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -18,9 +18,9 @@ export const getMovies = async ( page ) => {
     return response.json();
   };
 
-  export const getTopRatedMovies = async () => {
+  export const getTopRatedMovies = async (page) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
     );
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -87,9 +87,9 @@ export const getMovies = async ( page ) => {
       });
   };
 
-  export const getPeople = async () => {
+  export const getPeople = async (page) => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
     );
     if (!response.ok) {
       throw new Error(response.json().message);

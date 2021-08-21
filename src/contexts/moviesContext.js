@@ -3,19 +3,19 @@ import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
+  const [page,setPage] = useState(1)
   const [myReviews, setMyReviews] = useState( {} )
   const [favorites, setFavorites] = useState( [] )
   const [watchList, setWatchList] = useState( [] )
   const [user, setUser] = useState({ username: null, password: null });
-  const [page, setPage] = useState(1);
 
 const userData = 
   { username: "user",
     password: "secret"
 }
 
-const newPage = () => {
-  setPage(page)
+const pageUpdate = (p) => {
+  setPage(p)
 }
 
   const authenticate = (username, password) => {
@@ -55,7 +55,7 @@ const newPage = () => {
         favorites,
         watchList,
         isAuthenticated,
-        newPage,
+        pageUpdate,
         addToFavorites,
         removeFromFavorites,
         addReview,

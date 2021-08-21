@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import PageTemplate from "../components/templatePeopleListPage";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getPeople} from '../api/tmdb-api'
+import { MoviesContext } from "../contexts/moviesContext"
 
 
 const PeoplePage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('people', getPeople)
+  const { page, pageUpdate } = useContext(MoviesContext); 
+  const {  data, error, isLoading, isError }  = useQuery(
+    ['people', {page: page}],() => getPeople(page),{ keepPreviousData: true })
 
   if (isLoading) {
     return <Spinner />
@@ -21,6 +24,7 @@ const PeoplePage = (props) => {
     <PageTemplate
       title="Explore the people of Movies"
       people={people}
+      pageUpdate={pageUpdate}
     />
 );
 };

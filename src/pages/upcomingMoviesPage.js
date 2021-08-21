@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import PageTemplate from '../components/templateMovieListPage';
 import { getUpcomingMovies } from "../api/tmdb-api";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner';
 import AddtoWatchListIcon from '../components/cardIcons/addToWatchlist'
+import { MoviesContext } from "../contexts/moviesContext";
 
 const UpcomingMoviesPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
-
+  const { page, pageUpdate } = useContext(MoviesContext); 
+  const {  data, error, isLoading, isError }  = useQuery(
+    ['upcoming', { page: page }],() => getUpcomingMovies(page), { keepPreviousData: true })
   if (isLoading) {
     return <Spinner />
   }
@@ -21,6 +23,7 @@ const UpcomingMoviesPage = (props) => {
   return (
     <PageTemplate
       title='Discover Upcoming Movies'
+      pageUpdate={pageUpdate}
       movies={movies}
       action={(movie) => {
         return <AddtoWatchListIcon movie={movie} />

@@ -4,23 +4,25 @@ import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
-import Pagination from "../pagination"
+import Paginator from "../paginator"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
     padding: "20px",
   },
-});
+  paginator: {
+    margin: theme.spacing(3)
+  }
+}));
 
-function MovieListPageTemplate({ movies, title, action}) {
-  const [page,setPage] = useState(1);
-  console.log("pagetemplate: " + page)
+function MovieListPageTemplate({ movies, title, action, pageUpdate }) {
   const classes = useStyles();
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
-  const updatePage = (newPage) => {
-    setPage(newPage)
-}
+
   
   const genreId = Number(genreFilter);
   let displayedMovies = movies
@@ -42,6 +44,9 @@ function MovieListPageTemplate({ movies, title, action}) {
       <Grid item xs={12}>
         <Header title={title} />
       </Grid>
+      <Grid item container className={classes.paginator} justify="center" padding="20">
+    <Paginator  pageUpdate={pageUpdate}/>
+    </Grid>
       <Grid item container spacing={5}>
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
           <FilterCard
@@ -53,7 +58,6 @@ function MovieListPageTemplate({ movies, title, action}) {
         <MovieList action={action} movies={displayedMovies}></MovieList>
       </Grid>
     </Grid>
-    <Pagination updatePage={updatePage}/>
             </>
   );
 }
