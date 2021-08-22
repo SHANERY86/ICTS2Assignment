@@ -43,10 +43,13 @@ const config = {
   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID
 }
+if(config.apiKey){
 firebase.initializeApp(config);
+}
 const App = () => {
 console.log(config.projectId)
-  return (
+  return ( config.apiKey ?  
+    //this block will run with a valid Firebase auth API key
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
     <MoviesContextProvider>
@@ -73,7 +76,35 @@ console.log(config.projectId)
       </MoviesContextProvider>
     </BrowserRouter>
     <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    </QueryClientProvider> 
+
+    :
+    //this block will run without a valid firebase auth API key.. login and signup forms will not function
+    <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+    <MoviesContextProvider>
+      <SiteHeader /> 
+      <Switch>
+        <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+        <Route path="/reviews/:id" component={MovieReviewPage} />       
+        <PrivateRoute exact path="/movies/favorites" component={FavoriteMoviesPage} />
+        <Route path="/movies/:id" component={MoviePage} />        
+        <Route exact path="/" component={HomePage} />       
+        <Route path="/upcoming" component={UpcomingMoviesPage} />
+        <Route path="/toprated" component={TopRatedMoviesPage} />
+        <Route path="/similar/:id" component={similarMoviesPage} />
+        <Route path="/explore" component={ExplorePage} />
+        <Route path="/people" component={PeoplePage} />
+        <Route path="/person/:id" component={PersonDetailsPage} />
+        <Route path="/moviesbyactor/:id" component={MoviesByActorPage} />  
+        <Route path="/login" component={LoginPage} /> 
+        <Route path="/signup" component={SignupPage} />       
+        <Redirect from="*" to="/" />
+      </Switch>
+      </MoviesContextProvider>
+    </BrowserRouter>
+    <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider> 
   );
 };
 

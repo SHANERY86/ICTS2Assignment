@@ -22,6 +22,7 @@ const pageUpdate = (p) => {
   setPage(p)
 }
 
+if(process.env.REACT_APP_API_KEY){
 firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
@@ -33,6 +34,7 @@ firebase.auth().onAuthStateChanged((user) => {
       setUser(firebase.auth().currentUser)
     }
 });
+}
 
 
   const isAuthenticated = user === null ? false : true
