@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../headerMovieList";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import LoginCard from "../loginCard";
+import AuthCard from "../authCard";
 
 
 const useStyles = makeStyles({
@@ -11,13 +11,14 @@ const useStyles = makeStyles({
   },
 });
 
-function LoginPageTemplate({ }) {
+function AuthPageTemplate({ action }) {
   const classes = useStyles();
 
   return (
     <>
-        <LoginCard/>
+        <AuthCard
+        action={action}/>
         </>
   );
 }
-export default LoginPageTemplate;
+export default AuthPageTemplate;

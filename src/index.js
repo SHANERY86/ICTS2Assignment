@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { FirebaseAuthProvider } from "@react-firebase/auth";
 import PrivateRoute from "./privateRoute";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
@@ -19,6 +22,8 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import PersonDetailsPage from './pages/personDetailsPage';
 import MoviesByActorPage from './pages/moviesByActorPage';
 import LoginPage from './pages/loginPage';
+import SignupPage from './pages/signUpPage';
+require('dotenv').config();
 
 
 const queryClient = new QueryClient({
@@ -31,11 +36,21 @@ const queryClient = new QueryClient({
   },
 });
 
+const config = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  projectId: process.env.REACT_APP_PROJECTID,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID
+}
+firebase.initializeApp(config);
 const App = () => {
+console.log(config.projectId)
   return (
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
     <MoviesContextProvider>
+      <FirebaseAuthProvider firebase={firebase} {...config}>
       <SiteHeader /> 
       <Switch>
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
@@ -50,9 +65,11 @@ const App = () => {
         <Route path="/people" component={PeoplePage} />
         <Route path="/person/:id" component={PersonDetailsPage} />
         <Route path="/moviesbyactor/:id" component={MoviesByActorPage} />  
-        <Route path="/login" component={LoginPage} />  
+        <Route path="/login" component={LoginPage} /> 
+        <Route path="/signup" component={SignupPage} />       
         <Redirect from="*" to="/" />
       </Switch>
+      </FirebaseAuthProvider>
       </MoviesContextProvider>
     </BrowserRouter>
     <ReactQueryDevtools initialIsOpen={false} />

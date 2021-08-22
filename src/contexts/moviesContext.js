@@ -1,13 +1,17 @@
+import { SignalCellularNull } from "@material-ui/icons";
+import firebase from "firebase/app";
+import "firebase/auth";
 import React, { useState } from "react";
-
 export const MoviesContext = React.createContext(null);
+
+
 
 const MoviesContextProvider = (props) => {
   const [page,setPage] = useState(1)
   const [myReviews, setMyReviews] = useState( {} )
   const [favorites, setFavorites] = useState( [] )
   const [watchList, setWatchList] = useState( [] )
-  const [user, setUser] = useState({ username: null, password: null });
+  const [user, setUser] = useState(null);
 
 const userData = 
   { username: "user",
@@ -18,13 +22,20 @@ const pageUpdate = (p) => {
   setPage(p)
 }
 
-  const authenticate = (username, password) => {
-    if(username == userData.username && password == userData.password ){
-    setUser({ username, password });
+firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        // ...
+      setUser(user);
+    } 
+    else {
+      setUser(firebase.auth().currentUser)
     }
-  };
+});
 
-  const isAuthenticated = user.username === null ? false : true
+
+  const isAuthenticated = user === null ? false : true
 
   const signout = () => {
     setTimeout(() => setUser( { username: null, password: null } ), 100);
@@ -60,7 +71,6 @@ const pageUpdate = (p) => {
         removeFromFavorites,
         addReview,
         addToWatchList,
-        authenticate,
         signout
       }}
     >
