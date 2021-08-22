@@ -8,6 +8,7 @@ import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
 import WriteReview from "../components/cardIcons/writeReview";
 
 const FavoriteMoviesPage = () => {
+  const { page, pageUpdate } = useContext(MoviesContext); 
   const {favorites: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run in parallel.
@@ -31,6 +32,7 @@ const FavoriteMoviesPage = () => {
     <PageTemplate
       title="Favorite Movies"
       movies={movies}
+      pageUpdate={pageUpdate}
       action={(movie) => {
         return (
           <>
