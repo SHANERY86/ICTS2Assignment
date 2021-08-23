@@ -1,6 +1,7 @@
 # Assignment - ReactJS app.
 
 Name: Shane Ryan
+ID: 20011479
 
 ## Overview.
 
@@ -275,8 +276,8 @@ See new storybook elements..
 
 ## Independent learning (If relevant).
 
-Firebase Authentication- see index.js, authContext.js, siteHeader.js
-Pagination - see moviesContext.js, components/paginator, templateMovieListPage, templatePeopleListPage
++ Firebase Authentication- see index.js, authContext.js, siteHeader.js
++ Pagination - see moviesContext.js, components/paginator, templateMovieListPage, templatePeopleListPage
 
 [model]: ./model.png
 [view]: ./view.png
