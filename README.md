@@ -18,7 +18,7 @@ and actors. I also wanted to achieve third party authentication via Firebase.
 ## Setup requirements.
 
 This app uses the TMDB database, and an API KEY from the TMDB website is required to be input to a .env file.
-There is some conditional logic to ensure that this app can run without any other addons, however for the authentication to work, you will need to have a firebase account
+There is some conditional logic to ensure that this app can run without any other addons like Firebase, however for the authentication to work, you will need to have a firebase account
 and link the app to your API key in the .env file. Follow online instrucions for registering and retrieving config information. 
 
 .env configuration necessary for app to function: 
