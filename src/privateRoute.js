@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { MoviesContext } from "./contexts/moviesContext";
+import { AuthContext } from "./contexts/authContext";
 
 const PrivateRoute = (props) => {
-  const context = useContext(MoviesContext);
+  const context = useContext(AuthContext);
   // Destructure props from <privateRoute>
   const { component: Component, ...rest } = props;
   // console.log(props.location)
