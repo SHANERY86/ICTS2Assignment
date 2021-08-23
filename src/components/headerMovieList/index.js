@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import firebase from "firebase/app";
 import "firebase/auth";
-import { MoviesContext } from "../../contexts/moviesContext"
+import { AuthContext } from "../../contexts/authContext"
 import Grid from "@material-ui/core/Grid";
 
 
@@ -19,10 +19,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = ( props ) => {
-const context = useContext(MoviesContext);
+  const context = useContext(AuthContext);
   const classes = useStyles();
   const title = props.title
-  const user = context.userCredentials
+  let user = null
+  if(process.env.REACT_APP_API_KEY){
+  user = context.userCredentials
+  }
   return (
     user ? 
     <Paper component="div" className={classes.root}>

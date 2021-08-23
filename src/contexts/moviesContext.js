@@ -8,33 +8,11 @@ const MoviesContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} )
   const [favorites, setFavorites] = useState( [] )
   const [watchList, setWatchList] = useState( [] )
-  const [user, setUser] = useState(firebase.auth().currentUser);
 
 const pageUpdate = (p) => {
   setPage(p)
 }
 
-if(process.env.REACT_APP_API_KEY){
-firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-      setUser(user);
-    } 
-    else {
-      setUser(firebase.auth().currentUser)
-    }
-});
-}
-
-const userCredentials = user ? {
-    email: user.email,
-    uid: user.uid
-} : null
-
-  const isAuthenticated = user === null ? false : true
-
-  const signout = () => {
-    setTimeout(() => setUser( { username: null, password: null } ), 100);
-  };
 
   const addToFavorites = (movie) => {
     setFavorites([...favorites,movie.id])
@@ -57,17 +35,14 @@ const userCredentials = user ? {
   return (
     <MoviesContext.Provider
       value={{
-        userCredentials,
         page,
         favorites,
         watchList,
-        isAuthenticated,
         pageUpdate,
         addToFavorites,
         removeFromFavorites,
         addReview,
         addToWatchList,
-        signout
       }}
     >
       {props.children}

@@ -1,12 +1,12 @@
 import React from "react";
-import LoginCard from "../components/loginCard";
+import AuthCard from "../components/authCard";
 import { MemoryRouter } from "react-router";
 import MoviesContextProvider from "../contexts/moviesContext";
 
 
 export default {
-  title: "Login Page/LoginCard",
-  component: LoginCard,
+  title: "Auth Page/AuthCard",
+  component: AuthCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
     (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
@@ -15,7 +15,7 @@ export default {
 
 export const Basic = () => {
     return (
-      <LoginCard
+      <AuthCard
       />
     );
   };

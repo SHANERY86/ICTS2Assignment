@@ -4,20 +4,37 @@ Name: Shane Ryan
 
 ## Overview.
 
-I am using the movies fan app. The additional objectives for me was to create
+I am using the movies fan app. The additional objectives for me were to create more interlinking between the movies and their actors, and to allow to span multiple pages of movies
+and actors. I also wanted to achieve third party authentication via Firebase. 
 
-
-...... A bullet-point list of user features. If it's the Movies Fan app extension, only list new/modified features...... 
- 
- + Feature 1
- + Feature 2
- + Feature 3
- + etc
- + etc
+ + Top rated movies page
+ + Similar Movies Link on movie details page
+ + Clickable cast members on movie details page
+ + Responsive UI on movie details page (images removed on smaller screens)
+ + People page, to explore popular actors and directors with interlinking to movies
+ + Login and Signup pages, linked to firebase authentication
 
 ## Setup requirements.
 
-...... A brief explanation (to a third party) of any non-standard setup steps necessary to run your app/client locally (after cloning the repo) ........
+This app uses the TMDB database, and an API KEY from the TMDB website is required to be input to a .env file.
+There is some conditional logic to ensure that this app can run without any other addons, however for the authentication to work, you will need to have a firebase account
+and link the app to your API key in the .env file. Follow online instrucions for registering and retrieving config information. 
+
+.env configuration necessary for app to function: 
+
+REACT_APP_TMDB_KEY=YOUR KEY HERE
+
+.env configuration necessary for Firebase authentication
+
+REACT_APP_API_KEY=YOUR INFO HERE
+REACT_APP_AUTHDOMAIN=YOUR INFO HERE
+REACT_APP_PROJECTID=YOUR INFO HERE
+REACT_APP_STORAGEBUCKET=YOUR INFO HERE
+REACT_APP_MESSAGINGSENDERID=YOUR INFO HERE
+REACT_APP_APPID=YOUR INFO HERE
+REACT_APP_MEASUREMENTID=YOUR INFO HERE
+
+
 
 ## API Data Model.
 
@@ -58,6 +75,6 @@ I am using the movies fan app. The additional objectives for me was to create
 ....... Briefly state any technologies/techniques used in your project codebase that was not covered in the lectures/labs. Provide source code filename (source code excerpts are not required in most cases) references to support your assertions and include references (articles/blogs) ......... 
 
 
-[model]: ./data.jpg
+[model]: ./model.png
 [view]: ./view.png
 [stories]: ./storybook.png

@@ -23,6 +23,7 @@ import PersonDetailsPage from './pages/personDetailsPage';
 import MoviesByActorPage from './pages/moviesByActorPage';
 import LoginPage from './pages/loginPage';
 import SignupPage from './pages/signUpPage';
+import AuthContextProvider from "./contexts/authContext";
 require('dotenv').config();
 
 
@@ -54,6 +55,7 @@ console.log(config.projectId)
     <BrowserRouter>
     <MoviesContextProvider>
       <FirebaseAuthProvider firebase={firebase} {...config}>
+      <AuthContextProvider>
       <SiteHeader /> 
       <Switch>
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
@@ -72,6 +74,7 @@ console.log(config.projectId)
         <Route path="/signup" component={SignupPage} />       
         <Redirect from="*" to="/" />
       </Switch>
+      </AuthContextProvider>
       </FirebaseAuthProvider>
       </MoviesContextProvider>
     </BrowserRouter>

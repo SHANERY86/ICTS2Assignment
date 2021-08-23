@@ -14,6 +14,7 @@ import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { AuthContext } from "../../contexts/authContext"
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -29,8 +30,10 @@ const SiteHeader = ( { history }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const context = useContext(MoviesContext);
-
-  const menuOptions = context.isAuthenticated ? [
+  const authContext = useContext(AuthContext);
+  let menuOptions = []
+  if(process.env.REACT_APP_API_KEY){
+  menuOptions = authContext.isAuthenticated ? [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/upcoming"},
     { label: "Favorites", path: "/movies/favorites" },
@@ -45,7 +48,16 @@ const SiteHeader = ( { history }) => {
   { label: "People", path: "/people" },
   { label: "Login", path: "/login"},
   { label: "Signup", path: "/signup"}
-];
+];}
+
+if(!process.env.REACT_APP_API_KEY){
+   menuOptions = 
+  [    
+  { label: "Home", path: "/" },
+  { label: "Upcoming", path: "/upcoming"},
+  { label: "Top Rated", path: "/toprated" },
+  { label: "People", path: "/people" },
+];}
 
   const handleMenuSelect = (option) => {
     if(option.label == "Logout"){
