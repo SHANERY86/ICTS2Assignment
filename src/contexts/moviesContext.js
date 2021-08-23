@@ -1,10 +1,7 @@
-import { SignalCellularNull } from "@material-ui/icons";
 import firebase from "firebase/app";
 import "firebase/auth";
 import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
-
-
 
 const MoviesContextProvider = (props) => {
   const [page,setPage] = useState(1)
@@ -25,9 +22,6 @@ const pageUpdate = (p) => {
 if(process.env.REACT_APP_API_KEY){
 firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        // ...
       setUser(user);
     } 
     else {

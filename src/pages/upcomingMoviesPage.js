@@ -10,6 +10,7 @@ const UpcomingMoviesPage = (props) => {
   const { page, pageUpdate } = useContext(MoviesContext); 
   const {  data, error, isLoading, isError }  = useQuery(
     ['upcoming', { page: page }],() => getUpcomingMovies(page), { keepPreviousData: true })
+    const multiPage = true;
   if (isLoading) {
     return <Spinner />
   }
@@ -25,6 +26,7 @@ const UpcomingMoviesPage = (props) => {
       title='Discover Upcoming Movies'
       pageUpdate={pageUpdate}
       movies={movies}
+      multiPage={multiPage}
       action={(movie) => {
         return <AddtoWatchListIcon movie={movie} />
       }}

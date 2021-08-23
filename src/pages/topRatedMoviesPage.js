@@ -11,6 +11,8 @@ const TopRatedMoviesPage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery(
     ['topRated', { page: page }],() => getTopRatedMovies(page), { keepPreviousData: true })
 
+    const multiPage = true;
+
   if (isLoading) {
     return <Spinner />
   }
@@ -26,6 +28,7 @@ const TopRatedMoviesPage = (props) => {
       title='Discover Top Rated Movies'
       pageUpdate={pageUpdate}
       movies={movies}
+      multiPage={multiPage}
       action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />
       }}

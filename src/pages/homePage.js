@@ -11,7 +11,7 @@ const HomePage = () => {
   const {  data, error, isLoading, isError }  
       = useQuery(['discover', { page: page }],() => getMovies(page),{ keepPreviousData: true });
 
-
+const multiPage = true;
   if (isLoading) {
     return <Spinner />
   }
@@ -26,6 +26,7 @@ const HomePage = () => {
       title="Discover Movies"
       movies={movies}
       pageUpdate={pageUpdate}
+      multiPage={multiPage}
       action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
