@@ -23,7 +23,7 @@ const UpcomingMoviesPage = (props) => {
 
   return (
     <PageTemplate
-      title='Discover Upcoming Movies'
+      title='Upcoming Movies'
       pageUpdate={pageUpdate}
       movies={movies}
       multiPage={multiPage}

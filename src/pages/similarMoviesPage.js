@@ -22,7 +22,7 @@ const SimilarMoviesPage = (props) => {
 
   return (
     <PageTemplate
-      title="Discover Similar Movies"
+      title="Similar Movies"
       movies={movies}
       pageUpdate={pageUpdate}
       action={(movie) => {

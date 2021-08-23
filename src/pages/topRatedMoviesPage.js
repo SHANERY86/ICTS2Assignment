@@ -25,7 +25,7 @@ const TopRatedMoviesPage = (props) => {
 
   return (
     <PageTemplate
-      title='Discover Top Rated Movies'
+      title='Top Rated Movies'
       pageUpdate={pageUpdate}
       movies={movies}
       multiPage={multiPage}

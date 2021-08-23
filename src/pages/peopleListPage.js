@@ -22,7 +22,7 @@ const PeoplePage = (props) => {
 
   return (
     <PageTemplate
-      title="Explore the people of Movies"
+      title="People of Movies"
       people={people}
       pageUpdate={pageUpdate}
     />

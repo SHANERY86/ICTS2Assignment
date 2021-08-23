@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { MoviesContext } from "../../contexts/moviesContext"
+import Grid from "@material-ui/core/Grid";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,11 +18,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = (props ) => {
+const Header = ( props ) => {
+const context = useContext(MoviesContext);
   const classes = useStyles();
   const title = props.title
+  const user = context.userCredentials
   return (
+    user ? 
     <Paper component="div" className={classes.root}>
+      <Grid container>
+        <Grid item xs={5}>
+        <Typography variant="body2" component="h6">
+          Logged In as:
+       <br></br> {user.email}
+      </Typography>
+      <Typography variant="caption" component="h6">
+          UID:
+       <br></br> {user.uid}
+      </Typography>
+      </Grid>
+      <Grid item xs={4}>
+      <Typography variant="h4" component="h3">
+        {title}
+      </Typography>
+      </Grid>
+      </Grid>
+    </Paper>
+      :
+      <Paper component="div" className={classes.root}>
       <Typography variant="h4" component="h3">
         {title}
       </Typography>

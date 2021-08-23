@@ -26,10 +26,6 @@ const MovieHeader = (props) => {
 
   return (
     <Paper component="div" className={classes.root}>
-      <IconButton aria-label="go back">
-        <ArrowBackIcon color="primary" fontSize="large" />
-      </IconButton>
-
       <Typography variant="h4" component="h3">
         {movie.title}
         <a href={movie.homepage}>
@@ -38,9 +34,6 @@ const MovieHeader = (props) => {
         <br />
         <span className={classes.tagLine}>{`   "${movie.tagline}"`} </span>
       </Typography>
-      <IconButton aria-label="go forward">
-        <ArrowForwardIcon color="primary" fontSize="large" />
-      </IconButton>
     </Paper>
   );
 };
