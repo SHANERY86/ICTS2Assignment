@@ -35,14 +35,14 @@ const SiteHeader = ( { history }) => {
     { label: "Upcoming", path: "/upcoming"},
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Top Rated", path: "/toprated" },
-    { label: "Explore", path: "/explore" },
+    { label: "People", path: "/people" },
     { label: "Logout", path: "/" },
   ] : 
   [    
   { label: "Home", path: "/" },
   { label: "Upcoming", path: "/upcoming"},
   { label: "Top Rated", path: "/toprated" },
-  { label: "Explore", path: "/explore" },
+  { label: "People", path: "/people" },
   { label: "Login", path: "/login"},
   { label: "Signup", path: "/signup"}
 ];

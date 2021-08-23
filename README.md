@@ -1,10 +1,10 @@
 # Assignment - ReactJS app.
 
-Name: ... your name ...
+Name: Shane Ryan
 
 ## Overview.
 
-...... State the app concept and objectives. If it's the Movies Fan app extension, only state the additional objectives .........
+I am using the movies fan app. The additional objectives for me was to create
 
 
 ...... A bullet-point list of user features. If it's the Movies Fan app extension, only list new/modified features...... 
